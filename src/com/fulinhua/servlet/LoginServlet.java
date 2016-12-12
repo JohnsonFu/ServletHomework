@@ -4,7 +4,6 @@ import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
 import com.fulinhua.dao.StudentDao;
 
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,44 +48,66 @@ public class LoginServlet extends HttpServlet{
             HttpSession session=request.getSession(true);
            session.setAttribute("student",student);
            List<StudentCourse> list=dao.getStudentList(id);
-
-
-
+            boolean isnormal=true;//是正常页面
+            for(StudentCourse test:list){
+                if(test.isHasExam()==false){
+                    isnormal=false;
+                }
+            }
             response.setCharacterEncoding("UTF-8");
-           // request.setCharacterEncoding("UTF-8");
-
             response.setContentType("text/html");
             PrintWriter out=response.getWriter();
-            ServletContext context=getServletConfig().getServletContext();
-            String dbdriver=context.getInitParameter("myname");
             out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
             out.println("<HTML>");
-            out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>课程列表</title></head>");
-            out.println(" <BODY>");
-            out.println("学生ID:"+student.getId());
-            out.println("学生姓名:"+student.getName()+"<br>");
-            out.println("<table border=\"1\">\n" +
-                    "    <tr>\n" +
-                    "        <th>编号</th>\n" +
-                    "        <th>名称</th>\n" +
-                    "        <th>状态</th>\n" +
-                    "    </tr>");
+            if(isnormal==false) {//存在未测验的项目
+                out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>警示页面</title></head>");
+                out.println(" <BODY>");
+                out.println("<h2>警示页面</h2>");
+                out.println("学生ID:" + student.getId());
+                out.println("学生姓名:" + student.getName() + "<br>");
+                out.println("<table border=\"1\">\n" +
+                        "    <tr>\n" +
+                        "        <th>编号</th>\n" +
+                        "        <th>名称</th>\n" +
+                        "        <th>状态</th>\n" +
+                        "    </tr>");
 
-            for(StudentCourse course:list){
-                out.println("<tr>");
-                out.println(" <th>"+course.getCourseid()+"</th>");
-                out.println(" <th>"+course.getName()+"</th>");
-                if(course.isHasExam()) {
-                    out.println(" <th>" + "已测验" + "</th>");
-                }else{
-                    out.println(" <th style=\"color:red\">" + "未测验" + "</th>");
+                for (StudentCourse course : list) {
+                    out.println("<tr>");
+                    out.println(" <th>" + course.getCourseid() + "</th>");
+                    out.println(" <th>" + course.getName() + "</th>");
+                    if (course.isHasExam()) {
+                        out.println(" <th>" + "已测验" + "</th>");
+                    } else {
+                        out.println(" <th style=\"color:red\">" + "未测验" + "</th>");
+                    }
+                    out.println("</tr>");
                 }
-                out.println("</tr>");
+            }else{//所有科目测验都完成
+                out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>标准页面</title></head>");
+                out.println(" <BODY>");
+                out.println("<h2>标准页面</h2>");
+                out.println("学生ID:" + student.getId());
+                out.println("学生姓名:" + student.getName() + "<br>");
+                out.println("<table border=\"1\">\n" +
+                        "    <tr>\n" +
+                        "        <th>编号</th>\n" +
+                        "        <th>名称</th>\n" +
+                        "        <th>状态</th>\n" +
+                        "    </tr>");
+
+                for (StudentCourse course : list) {
+                    out.println("<tr>");
+                    out.println(" <th>" + course.getCourseid() + "</th>");
+                    out.println(" <th>" + course.getName() + "</th>");
+                    out.println(" <th>" + "已测验" + "</th>");
+                    out.println("</tr>");
+                }
             }
-            out.println("</BODY>");
-            out.println("</HTML>");
-            out.flush();
-            out.close();
+                out.println("</BODY>");
+                out.println("</HTML>");
+                out.flush();
+                out.close();
 
 
 
