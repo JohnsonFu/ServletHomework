@@ -40,6 +40,7 @@ public class UserServlet extends HttpServlet {
                 e.printStackTrace();
             }
         }else{
+            request.getSession().setAttribute("username",username);
             response.setContentType("text/html");
             PrintWriter out=response.getWriter();
             out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
