@@ -54,7 +54,7 @@ public class LoginServlet extends HttpServlet{
                     isnormal=false;
                 }
             }
-            response.setCharacterEncoding("UTF-8");
+           // response.setCharacterEncoding("UTF-8");
             response.setContentType("text/html");
             PrintWriter out=response.getWriter();
             out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
