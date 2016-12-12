@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$USER_HOME$/workspace/SimpleWeb/WebContent/WEB-INF/lib" />
+      <root url="jar://$USER_HOME$/Documents/apache-tomcat-8.5.8/lib/servlet-api.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/lib/standard.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/lib/jstl.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/workspace/SimpleWeb/WebContent/WEB-INF/lib" recursive="false" />
+  </library>
+</component>
