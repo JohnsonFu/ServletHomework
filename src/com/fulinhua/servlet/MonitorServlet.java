@@ -30,8 +30,9 @@ public class MonitorServlet extends HttpServlet{
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
 
         String username=(String)request.getSession().getAttribute("username");
-        ArrayList<String> online = (ArrayList<String>)getServletContext().getAttribute("online");
-        int pageCounter=Integer.parseInt((String)getServletContext().getAttribute("pageCounter"));
+        ArrayList<String> online = (ArrayList<String>)getServletContext().getAttribute("online");//在线用户列表
+        int pageCounter=Integer.parseInt((String)getServletContext().getAttribute("pageCounter"));//总人数
+        int visitCounter=Integer.parseInt((String)getServletContext().getAttribute("visitCounter"));//游客人数
         System.out.println("LoginServlet" + online);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -41,6 +42,7 @@ public class MonitorServlet extends HttpServlet{
        // out.println("当前用户是：" + username);
         out.print("    <hr><h3>在线用户列表</h3>");
         out.print("当前在线用户总数"+pageCounter+"<br>");
+        out.print("当前在线游客数"+visitCounter+"<br>");
         int size = online == null ? 0 : online.size();
         for (int i = 0; i < size; i++) {
             if(i > 0){

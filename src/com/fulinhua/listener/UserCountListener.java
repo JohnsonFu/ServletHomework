@@ -19,6 +19,7 @@ public class UserCountListener implements ServletContextListener, ServletContext
         //设置一个列表属性，用于保存在线用户名
         int pageCounter=0;
         this.application.setAttribute("pageCounter",Integer.toString(pageCounter));//保存在线人数
+        this.application.setAttribute("visitCounter",Integer.toString(0));//保存在线人数
         this.application.setAttribute("online", new ArrayList<String>());
     }
 

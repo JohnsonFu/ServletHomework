@@ -1,5 +1,6 @@
 package com.fulinhua.dao;
 
+import com.fulinhua.bean.Course;
 import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
 
@@ -86,5 +87,27 @@ public class StudentDao {
         }
 
 
+    public ArrayList<Course> getCourseList() throws SQLException {
+        ArrayList<Course> list=new ArrayList<Course>();
+        PreparedStatement pstmt=null;
+        String sql="select * from tb_course";
+        pstmt=con.prepareStatement(sql);
+        ResultSet resultSet=pstmt.executeQuery();
+        int rowCount = 0;
+        while(resultSet.next())
+        {
+            Course temp=new Course();
+            temp.setId(resultSet.getInt("id"));
+            temp.setName(resultSet.getString("name"));
 
+            list.add(temp);
+            rowCount++;
+        }
+        if(rowCount==0){
+            return null;
+        }else{
+
+            return list;
+        }
+    }
 }
