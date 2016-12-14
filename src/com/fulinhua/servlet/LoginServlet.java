@@ -65,9 +65,13 @@ public class LoginServlet extends HttpServlet{
             PrintWriter out=response.getWriter();
             out.println("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
             out.println("<HTML>");
+            out.println("<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">");
+out.println("<script src=\"bootstrap/js/bootstrap.min.js\"></script>");
+out.println("<script src=\"jquery-1.8.3/jquery.js\"></script>");
             if(isnormal==false) {//存在未测验的项目
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>警示页面</title></head>");
                 out.println(" <BODY>");
+                out.println("<div align=\"center\">");
                 out.println("<h2>警示页面</h2>");
                 out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
@@ -93,6 +97,7 @@ public class LoginServlet extends HttpServlet{
             }else{//所有科目测验都完成
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>标准页面</title></head>");
                 out.println(" <BODY>");
+                out.println("<div align=\"center\">");
                 out.println("<h2>标准页面</h2>");
                 out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
@@ -112,6 +117,7 @@ public class LoginServlet extends HttpServlet{
                     out.println("</tr>");
                 }
             }
+            out.println("</div align=\"center\">");
                 out.println("</BODY>");
                 out.println("</HTML>");
                 out.flush();

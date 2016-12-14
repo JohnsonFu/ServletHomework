@@ -10,12 +10,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-1.8.3/jquery.js"></script>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 
 <%
     StudentDao dao=new StudentDao();
     ArrayList<Course> list=dao.getCourseList();
+    request.setAttribute("clist",list);
     if(session.getAttribute("username")==null){//是游客
         int pageCounter= Integer.parseInt((String) application.getAttribute("pageCounter"));
         pageCounter++;
@@ -31,11 +35,10 @@
     <title>课程列表</title>
 </head>
 <script>
-    function checkLeave(){
-        window.location.href="index.jsp";
-    }
+
 </script>
-<body onunload="checkLeave()">
+<body>
+<div align="center">
 <a href="#">添加课程</a>
 <a href="#">课程列表</a>
 <table border="1">
@@ -43,12 +46,14 @@
         <th>编号</th>
         <th>名称</th>
     </tr>
-    <% for(Course course:list){ %>
-    <tr>
-        <th><%=course.getId()%></th>
-        <th><%=course.getName()%></th>
-    </tr>
-    <%}%>
+
+    <c:forEach items="${clist}" var="course">
+        <tr>
+            <th>${course.id}</th>
+            <th>${course.name}</th>
+        </tr>
+    </c:forEach>
 </table>
+    </div>
 </body>
 </html>

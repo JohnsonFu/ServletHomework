@@ -36,6 +36,10 @@ public class MonitorServlet extends HttpServlet{
         System.out.println("LoginServlet" + online);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
+        out.println("<link href=\"bootstrap/css/bootstrap.min.css\" rel=\"stylesheet\" media=\"screen\">");
+        out.println("<script src=\"bootstrap/js/bootstrap.min.js\"></script>");
+        out.println("<script src=\"jquery-1.8.3/jquery.js\"></script>");
+        out.println("<div align=\"center\">");
         out.println("");
         out.println("  <title>用户列表</title>");
         out.println("  ");
@@ -53,6 +57,7 @@ public class MonitorServlet extends HttpServlet{
 
         //注意: 要对链接URL进行自动重写处理
         out.println("<hr/><a href=\"" + response.encodeURL("logoutListener") + "\">注销</a>");
+        out.println("</div align=\"center\">");
         out.println("  ");
         out.println("");
         out.flush();

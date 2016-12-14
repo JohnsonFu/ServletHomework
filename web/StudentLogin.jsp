@@ -12,12 +12,17 @@
 <head>
     <title>学生登录</title>
 </head>
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="jquery-1.8.3/jquery.js"></script>
 <body>
+<div align="center">
 <h1>学生登录</h1>
 <form action="/ServletHomework/login.student" method="post">
-    <label>学号</label><input type="text" name="id"/><br>
-    <label>密码</label><input type="password" name="password"/>
+   学号<input type="text" name="id"/><br>
+   密码<input type="password" name="password"/><br>
     <input type="submit" value="登录"></inputsubmit>
 </form>
+    </div>
 </body>
 </html>
