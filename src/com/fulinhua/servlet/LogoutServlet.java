@@ -32,13 +32,19 @@ public class LogoutServlet extends HttpServlet {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException {
         HttpSession session=request.getSession();
         Student student=(Student)session.getAttribute("student");
-        session.removeAttribute("student");
+        session.invalidate();
         ServletContext Context= getServletContext();
         int pageCounter= Integer.parseInt((String) Context.getAttribute("pageCounter"));
         pageCounter--;
         Context.setAttribute("pageCounter", Integer.toString(pageCounter));
         ArrayList<String> online = (ArrayList<String>)getServletContext().getAttribute("online");
-       online.remove(student.getName());
+     String username=student.getName();
+      for(int i=0;i<online.size();i++){
+          if(online.get(i).equals(username)){
+              online.remove(i);
+              break;
+          }
+      }
         Context.setAttribute("online", online);
         response.sendRedirect("StudentLogin.jsp");
 
