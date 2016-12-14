@@ -4,6 +4,7 @@ import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
 import com.fulinhua.dao.StudentDao;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -47,6 +48,11 @@ public class LoginServlet extends HttpServlet{
         }else{//登陆成功
             HttpSession session=request.getSession(true);
            session.setAttribute("student",student);
+            request.getSession().setAttribute("username",student.getName());
+            ServletContext Context= getServletContext();
+            int pageCounter= Integer.parseInt((String) Context.getAttribute("pageCounter"));
+            pageCounter++;
+            Context.setAttribute("pageCounter", Integer.toString(pageCounter));
            List<StudentCourse> list=dao.getStudentList(id);
             boolean isnormal=true;//是正常页面
             for(StudentCourse test:list){
@@ -63,6 +69,7 @@ public class LoginServlet extends HttpServlet{
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>警示页面</title></head>");
                 out.println(" <BODY>");
                 out.println("<h2>警示页面</h2>");
+                out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
                 out.println("学生姓名:" + student.getName() + "<br>");
                 out.println("<table border=\"1\">\n" +
@@ -87,6 +94,7 @@ public class LoginServlet extends HttpServlet{
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>标准页面</title></head>");
                 out.println(" <BODY>");
                 out.println("<h2>标准页面</h2>");
+                out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
                 out.println("学生姓名:" + student.getName() + "<br>");
                 out.println("<table border=\"1\">\n" +

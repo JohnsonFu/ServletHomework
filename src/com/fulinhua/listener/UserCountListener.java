@@ -1,18 +1,14 @@
 package com.fulinhua.listener;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
+import javax.servlet.*;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
 import java.util.ArrayList;
 
 /**
  * Created by fulinhua on 2016/12/12.
  */
-public class UserCountListener implements ServletContextListener,HttpSessionAttributeListener, HttpSessionListener {
+public class UserCountListener implements ServletContextListener, ServletContextAttributeListener,HttpSessionAttributeListener {
 
     private ServletContext application = null;
 
@@ -21,11 +17,30 @@ public class UserCountListener implements ServletContextListener,HttpSessionAttr
         //初始化一个application对象
         application = servletContextEvent.getServletContext();
         //设置一个列表属性，用于保存在线用户名
+        int pageCounter=0;
+        this.application.setAttribute("pageCounter",Integer.toString(pageCounter));//保存在线人数
         this.application.setAttribute("online", new ArrayList<String>());
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
+
+    }
+
+    @Override
+    public void attributeAdded(ServletContextAttributeEvent servletContextAttributeEvent) {
+
+    }
+
+    @Override
+    public void attributeRemoved(ServletContextAttributeEvent servletContextAttributeEvent) {
+
+    }
+
+    @Override
+    public void attributeReplaced(ServletContextAttributeEvent servletContextAttributeEvent) {
+
+
 
     }
 
@@ -49,13 +64,4 @@ public class UserCountListener implements ServletContextListener,HttpSessionAttr
 
     }
 
-    @Override
-    public void sessionCreated(HttpSessionEvent httpSessionEvent) {
-
-    }
-
-    @Override
-    public void sessionDestroyed(HttpSessionEvent httpSessionEvent) {
-
-    }
 }

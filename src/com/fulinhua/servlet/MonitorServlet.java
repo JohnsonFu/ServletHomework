@@ -31,15 +31,16 @@ public class MonitorServlet extends HttpServlet{
 
         String username=(String)request.getSession().getAttribute("username");
         ArrayList<String> online = (ArrayList<String>)getServletContext().getAttribute("online");
+        int pageCounter=Integer.parseInt((String)getServletContext().getAttribute("pageCounter"));
         System.out.println("LoginServlet" + online);
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.println("");
         out.println("  <title>用户列表</title>");
         out.println("  ");
-        out.println("当前用户是：" + username);
+       // out.println("当前用户是：" + username);
         out.print("    <hr><h3>在线用户列表</h3>");
-
+        out.print("当前在线用户总数"+pageCounter+"<br>");
         int size = online == null ? 0 : online.size();
         for (int i = 0; i < size; i++) {
             if(i > 0){
