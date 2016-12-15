@@ -18,11 +18,23 @@
 <body>
 <div align="center">
 <h1>学生登录</h1>
-<form action="/ServletHomework/login.student" method="post">
-   学号<input type="text" name="id"/><br>
+<form action="/ServletHomework/login.student" method="post" onsubmit="return check()">
+   学号<input type="text" name="id" /><br>
    密码<input type="password" name="password"/><br>
-    <input type="submit" value="登录"></inputsubmit>
+    <button  type="submit"  type="button" class="btn btn-small" >登录</button>
 </form>
     </div>
+<script type="text/javascript">
+    function check() {
+        var name = document.getElementsByName("id")[0].value;
+        var reg1 = /^[0-9]*$/;
+        if (!reg1.test(name)) {
+            alert("学号必须为数字!");
+            return false;
+        }else {
+            return true;
+        }
+    }
+</script>
 </body>
 </html>

@@ -71,12 +71,12 @@ out.println("<script src=\"jquery-1.8.3/jquery.js\"></script>");
             if(isnormal==false) {//存在未测验的项目
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>警示页面</title></head>");
                 out.println(" <BODY>");
-                out.println("<div align=\"center\">");
+                out.println("<div  style=\"width:50%;margin-left:25%;\"> ");
                 out.println("<h2>警示页面</h2>");
                 out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
                 out.println("学生姓名:" + student.getName() + "<br>");
-                out.println("<table border=\"1\">\n" +
+                out.println("<table width=\"50%\"  class=\"table table-bordered\">\n" +
                         "    <tr>\n" +
                         "        <th>编号</th>\n" +
                         "        <th>名称</th>\n" +
@@ -97,12 +97,12 @@ out.println("<script src=\"jquery-1.8.3/jquery.js\"></script>");
             }else{//所有科目测验都完成
                 out.println("<head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><title>标准页面</title></head>");
                 out.println(" <BODY>");
-                out.println("<div align=\"center\">");
+                out.println("<div  style=\"width:50%;margin-left:25%;\"> ");
                 out.println("<h2>标准页面</h2>");
                 out.println("<a href=\"/ServletHomework/logout.student\">退出登录</a><br>");
                 out.println("学生ID:" + student.getId());
                 out.println("学生姓名:" + student.getName() + "<br>");
-                out.println("<table border=\"1\">\n" +
+                out.println("<table   class=\"table table-bordered\">\n" +
                         "    <tr>\n" +
                         "        <th>编号</th>\n" +
                         "        <th>名称</th>\n" +

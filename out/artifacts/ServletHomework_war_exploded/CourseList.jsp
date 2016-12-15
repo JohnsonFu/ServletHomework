@@ -38,10 +38,10 @@
 
 </script>
 <body>
-<div align="center">
+<div style="margin-left:25%;width:50%" >
 <a href="#">添加课程</a>
 <a href="#">课程列表</a>
-<table border="1">
+<table class="table table-bordered">
     <tr>
         <th>编号</th>
         <th>名称</th>
