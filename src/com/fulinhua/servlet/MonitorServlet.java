@@ -41,12 +41,13 @@ public class MonitorServlet extends HttpServlet{
         out.println("<script src=\"jquery-1.8.3/jquery.js\"></script>");
         out.println("<div align=\"center\">");
         out.println("");
-        out.println("  <title>用户列表</title>");
+        out.println("  <title>在线用户列表</title>");
         out.println("  ");
        // out.println("当前用户是：" + username);
         out.print("    <hr><h3>在线用户列表</h3>");
-        out.print("当前在线用户总数"+pageCounter+"<br>");
-        out.print("当前在线游客数"+visitCounter+"<br>");
+        out.print("当前在线用户总数:"+pageCounter+"<br>");
+        out.print("当前在线游客数:"+visitCounter+"<br>");
+        out.print("在线注册用户列表:"+"<br>");
         int size = online == null ? 0 : online.size();
         for (int i = 0; i < size; i++) {
             if(i > 0){
@@ -56,7 +57,6 @@ public class MonitorServlet extends HttpServlet{
         }
 
         //注意: 要对链接URL进行自动重写处理
-        out.println("<hr/><a href=\"" + response.encodeURL("logoutListener") + "\">注销</a>");
         out.println("</div align=\"center\">");
         out.println("  ");
         out.println("");
