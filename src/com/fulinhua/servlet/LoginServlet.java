@@ -41,6 +41,9 @@ public class LoginServlet extends HttpServlet{
         Student student=dao.isExistStudent(id,password);
         if(student==null){//登录失败，调到错误页面
             try {
+                Student tmp=new Student();
+                tmp.setId(id);
+                request.getSession().setAttribute("tmp",tmp);
                 response.sendRedirect("/ServletHomework/loginError.jsp");
             } catch (IOException e) {
                 e.printStackTrace();

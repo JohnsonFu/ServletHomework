@@ -12,8 +12,15 @@
 <html>
 <head>
     <title>错误页面</title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="jquery-1.8.3/jquery.js"></script>
 </head>
 <body>
-未知的学生ID或者密码错误.......
+<jsp:useBean id="tmp" class="com.fulinhua.bean.Student" scope="session">
+
+</jsp:useBean>
+您输入的id:<%=tmp.getId()%>不存在或者密码错误<br>
+<a href="StudentLogin.jsp">返回</a>
 </body>
 </html>
