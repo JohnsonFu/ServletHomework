@@ -20,7 +20,8 @@
 <jsp:useBean id="tmp" class="com.fulinhua.bean.Student" scope="session">
 
 </jsp:useBean>
-您输入的id:<%=tmp.getId()%>不存在或者密码错误<br>
-<a href="StudentLogin.jsp">返回</a>
+<h2>Error!</h2>
+<h3>您输入的id:<%=tmp.getId()%>不存在或者密码错误<br></h3>
+<h4><a href="StudentLogin.jsp">返回</a></h4>
 </body>
 </html>
