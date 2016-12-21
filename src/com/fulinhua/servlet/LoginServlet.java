@@ -50,12 +50,15 @@ public class LoginServlet extends HttpServlet{
             }
         }else{//登陆成功
             HttpSession session=request.getSession(true);
+            String username= (String) session.getAttribute("username");
+            if(username==null) {
+                ServletContext Context = getServletContext();
+                int pageCounter = Integer.parseInt((String) Context.getAttribute("pageCounter"));
+                pageCounter++;
+                Context.setAttribute("pageCounter", Integer.toString(pageCounter));
+            }
            session.setAttribute("student",student);
             request.getSession().setAttribute("username",student.getName());
-            ServletContext Context= getServletContext();
-            int pageCounter= Integer.parseInt((String) Context.getAttribute("pageCounter"));
-            pageCounter++;
-            Context.setAttribute("pageCounter", Integer.toString(pageCounter));
            List<StudentCourse> list=dao.getStudentList(id);
             boolean isnormal=true;//是正常页面
             for(StudentCourse test:list){

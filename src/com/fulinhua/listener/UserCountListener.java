@@ -62,7 +62,18 @@ public class UserCountListener implements ServletContextListener, ServletContext
 
     @Override
     public void attributeReplaced(HttpSessionBindingEvent httpSessionBindingEvent) {
-
+        ArrayList<String> onlines = (ArrayList<String>) this.application.getAttribute("online");
+        if("username".equals(httpSessionBindingEvent.getName())){
+           for(int i=0;i<onlines.size();i++){
+               String username=(String)httpSessionBindingEvent.getValue();
+               if(onlines.get(i).equals(username)){
+                   onlines.remove(i);
+                   onlines.add((String)httpSessionBindingEvent.getSession().getAttribute("username"));
+               }
+           }
+        }
+        //将添加后的列表重新设置列application属性中.
+        this.application.setAttribute("online", onlines);
     }
 
 }
