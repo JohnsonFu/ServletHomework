@@ -45,6 +45,15 @@
         <url-pattern>/tourist</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>QuitCourseServlet</servlet-name>
+        <servlet-class>com.fulinhua.servlet.QuitCourseServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>QuitCourseServlet</servlet-name>
+        <url-pattern>/quitcourse</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>com.fulinhua.listener.UserCountListener</listener-class>
     </listener>

@@ -30,6 +30,7 @@
                <th>编号</th>
                  <th>名称</th>
                  <th>状态</th>
+                 <th>退课</th>
             </tr>
              <%
 
@@ -45,6 +46,9 @@ for (int i = 0; i < courseList.getStudentCourseList().size(); i++) {
             <% }else{%>
             <th style="color:red">未测验</th>
             <% } %>
+            <form action="/ServletHomework/quitcourse" method="post">
+            <th><input type="hidden" name="cid" value=<%=String.valueOf(item.getId())%>><input type="submit" value="退课"></th>
+                </form>
         </tr>
 <%}%>
 

@@ -29,6 +29,7 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
                 temp.setCourseid(resultSet.getInt("courseid"));
                 temp.setHasExam(resultSet.getBoolean("hasExam"));
                 temp.setName(resultSet.getString("name"));
+                temp.setId(resultSet.getInt("id"));
                 list.add(temp);
                 rowCount++;
             }
@@ -65,7 +66,21 @@ public class StudentDaoImpl extends BaseDao implements StudentDao {
 
         }
 
-
+    @Override
+    public boolean QuitCourse(int id) {
+        PreparedStatement pstmt=null;
+        String sql="delete  from tb_studentcourse where id=?";
+        System.out.println("正在删除"+id);
+        try {
+            pstmt=con.prepareStatement(sql);
+            pstmt.setInt(1,id);
+            pstmt.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
 
 
 }

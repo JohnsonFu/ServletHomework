@@ -31,4 +31,9 @@ public class StudentServiceImpl implements StudentService {
         }
         return null;
     }
+
+    @Override
+    public boolean QuitClass(int courseid) {
+        return DaoFactory.getStudentDao().QuitCourse(courseid);
+    }
 }

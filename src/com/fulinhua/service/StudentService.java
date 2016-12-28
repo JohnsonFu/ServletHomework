@@ -11,4 +11,5 @@ import java.util.List;
 public interface StudentService {
     public Student Login(long id, String password);
     public List<StudentCourse> getStudentCourseList(long sid);
+    public boolean QuitClass(int courseid);
 }

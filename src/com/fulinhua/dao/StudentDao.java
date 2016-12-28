@@ -9,4 +9,5 @@ import java.sql.SQLException;
  */
 public interface StudentDao {
     public Student isExistStudent(long id, String password) throws SQLException;
+    public boolean QuitCourse(int id);
 }
