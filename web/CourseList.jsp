@@ -1,6 +1,6 @@
 <%@ page import="com.fulinhua.bean.Course" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.fulinhua.dao.StudentDao" %><%--
+<%@ page import="com.fulinhua.dao.StudentDaoImpl" %><%--
   Created by IntelliJ IDEA.
   User: fulinhua
   Date: 2016/12/11
@@ -17,7 +17,7 @@
 
 
 <%
-    StudentDao dao=new StudentDao();
+    StudentDaoImpl dao=new StudentDaoImpl();
     ArrayList<Course> list=dao.getCourseList();
     request.setAttribute("clist",list);
     if(session.getAttribute("username")==null){//是游客

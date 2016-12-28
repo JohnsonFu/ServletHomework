@@ -11,9 +11,9 @@ import java.util.List;
 /**
  * Created by fulinhua on 2016/12/12.
  */
-public class StudentDao {
+public class StudentDaoImpl {
     Connection con;
-    public StudentDao() {
+    public StudentDaoImpl() {
         try {
             Class.forName("com.mysql.jdbc.Driver");     //加载MYSQL JDBC驱动程序
             //Class.forName("org.gjt.mm.mysql.Driver");

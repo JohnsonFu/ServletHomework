@@ -5,6 +5,8 @@
       <root url="jar://$USER_HOME$/Documents/apache-tomcat-8.5.8/lib/servlet-api.jar!/" />
       <root url="jar://$USER_HOME$/Desktop/lib/standard.jar!/" />
       <root url="jar://$USER_HOME$/Desktop/lib/jstl.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/westworld/jsp-api.jar!/" />
+      <root url="jar://$USER_HOME$/Desktop/westworld/servlet-api.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
