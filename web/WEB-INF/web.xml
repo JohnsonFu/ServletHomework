@@ -35,6 +35,16 @@
         <url-pattern>/monitor</url-pattern>
     </servlet-mapping>
 
+
+    <servlet>
+        <servlet-name>TouristServlet</servlet-name>
+        <servlet-class>com.fulinhua.servlet.TouristServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TouristServlet</servlet-name>
+        <url-pattern>/tourist</url-pattern>
+    </servlet-mapping>
+
     <listener>
         <listener-class>com.fulinhua.listener.UserCountListener</listener-class>
     </listener>

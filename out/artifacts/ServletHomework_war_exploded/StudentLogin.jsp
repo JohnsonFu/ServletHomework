@@ -18,7 +18,7 @@
 <body>
 <div  class="container" align="center">
     <br>
-    <a href="/ServletHomework/monitor">在线用户监控</a>&nbsp;&nbsp;&nbsp;<a href="CourseList.jsp">游客通道</a><br>
+    <a href="/ServletHomework/monitor">在线用户监控</a>&nbsp;&nbsp;&nbsp;<a href="/ServletHomework/tourist">游客通道</a><br>
 <h1>学生登录</h1>
 <form action="/ServletHomework/login.student" method="post" onsubmit="return check()">
    学号<input type="text" name="id" /><br>

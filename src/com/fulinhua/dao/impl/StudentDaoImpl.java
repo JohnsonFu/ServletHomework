@@ -1,8 +1,9 @@
 package com.fulinhua.dao.impl;
 
-import com.fulinhua.bean.Course;
 import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
+import com.fulinhua.dao.BaseDao;
+import com.fulinhua.dao.StudentDao;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -11,30 +12,8 @@ import java.util.List;
 /**
  * Created by fulinhua on 2016/12/12.
  */
-public class StudentDaoImpl {
-    Connection con;
-    public StudentDaoImpl() {
-        try {
-            Class.forName("com.mysql.jdbc.Driver");     //加载MYSQL JDBC驱动程序
-            //Class.forName("org.gjt.mm.mysql.Driver");
-            System.out.println("Success loading Mysql Driver!");
-        } catch (Exception e) {
-            System.out.print("Error loading Mysql Driver!");
-            e.printStackTrace();
-        }
+public class StudentDaoImpl extends BaseDao implements StudentDao {
 
-        try {
-             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/newtable", "root", "root");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        //连接URL为   jdbc:mysql//服务器地址/数据库名  ，后面的2个参数分别是登陆用户名和密码
-
-            System.out.println("Success connect Mysql server!");
-
-        }
 
         public List<StudentCourse> getStudentList(long sid) throws SQLException {//获得学生选择的课
             List<StudentCourse> list=new ArrayList<StudentCourse>();
@@ -87,27 +66,6 @@ public class StudentDaoImpl {
         }
 
 
-    public ArrayList<Course> getCourseList() throws SQLException {
-        ArrayList<Course> list=new ArrayList<Course>();
-        PreparedStatement pstmt=null;
-        String sql="select * from tb_course";
-        pstmt=con.prepareStatement(sql);
-        ResultSet resultSet=pstmt.executeQuery();
-        int rowCount = 0;
-        while(resultSet.next())
-        {
-            Course temp=new Course();
-            temp.setId(resultSet.getInt("id"));
-            temp.setName(resultSet.getString("name"));
 
-            list.add(temp);
-            rowCount++;
-        }
-        if(rowCount==0){
-            return null;
-        }else{
 
-            return list;
-        }
-    }
 }

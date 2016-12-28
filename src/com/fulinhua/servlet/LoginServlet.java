@@ -3,7 +3,6 @@ package com.fulinhua.servlet;
 import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
 import com.fulinhua.bean.StudentCourseList;
-import com.fulinhua.dao.impl.StudentDaoImpl;
 import com.fulinhua.factory.ServiceFactory;
 
 import javax.servlet.ServletContext;
@@ -37,7 +36,6 @@ public class LoginServlet extends HttpServlet{
         }
     }
     public void execute(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
-StudentDaoImpl dao=new StudentDaoImpl();
       Long id= Long.valueOf(request.getParameter("id"));
         String password=request.getParameter("password");
         ServletContext context = getServletContext();
@@ -62,7 +60,7 @@ StudentDaoImpl dao=new StudentDaoImpl();
             }
            session.setAttribute("student",student);
             request.getSession().setAttribute("username",student.getName());
-           List<StudentCourse> list=dao.getStudentList(id);
+           List<StudentCourse> list=ServiceFactory.getStudentService().getStudentCourseList(id);
             StudentCourseList courseList=new StudentCourseList();
             courseList.setStudentCourseList(list);
             session.setAttribute("courseList",courseList);
