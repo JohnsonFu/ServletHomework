@@ -1,6 +1,7 @@
 <%@ page import="com.fulinhua.bean.Course" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.fulinhua.dao.StudentDaoImpl" %><%--
+<%@ page import="com.fulinhua.dao.impl.StudentDaoImpl" %>
+<%@ page import="com.fulinhua.factory.ServiceFactory" %><%--
   Created by IntelliJ IDEA.
   User: fulinhua
   Date: 2016/12/11
@@ -18,7 +19,7 @@
 
 <%
     StudentDaoImpl dao=new StudentDaoImpl();
-    ArrayList<Course> list=dao.getCourseList();
+    ArrayList<Course> list= ServiceFactory.getCourseService().getAllCourse();
     request.setAttribute("clist",list);
     if(session.getAttribute("username")==null){//是游客
         int pageCounter= Integer.parseInt((String) application.getAttribute("pageCounter"));

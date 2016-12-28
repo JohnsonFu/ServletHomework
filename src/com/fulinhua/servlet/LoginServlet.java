@@ -3,7 +3,7 @@ package com.fulinhua.servlet;
 import com.fulinhua.bean.Student;
 import com.fulinhua.bean.StudentCourse;
 import com.fulinhua.bean.StudentCourseList;
-import com.fulinhua.dao.StudentDaoImpl;
+import com.fulinhua.dao.impl.StudentDaoImpl;
 import com.fulinhua.factory.ServiceFactory;
 
 import javax.servlet.ServletContext;

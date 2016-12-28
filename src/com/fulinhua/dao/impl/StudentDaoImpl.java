@@ -1,4 +1,4 @@
-package com.fulinhua.dao;
+package com.fulinhua.dao.impl;
 
 import com.fulinhua.bean.Course;
 import com.fulinhua.bean.Student;

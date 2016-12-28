@@ -1,6 +1,8 @@
 package com.fulinhua.factory;
 
+import com.fulinhua.service.CourseService;
 import com.fulinhua.service.StudentService;
+import com.fulinhua.service.impl.CourseServiceImpl;
 import com.fulinhua.service.impl.StudentServiceImpl;
 
 /**
@@ -9,5 +11,8 @@ import com.fulinhua.service.impl.StudentServiceImpl;
 public class ServiceFactory {
     public static StudentService getStudentService(){
         return new StudentServiceImpl();
+    }
+    public static CourseService getCourseService(){
+        return new CourseServiceImpl();
     }
 }
